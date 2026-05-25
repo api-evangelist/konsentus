@@ -1,0 +1,174 @@
+aid: konsentus
+url: https://raw.githubusercontent.com/api-evangelist/konsentus/refs/heads/main/apis.yml
+apis:
+- aid: konsentus:konsentus-verify-api
+  name: Konsentus Verify API
+  tags:
+  - Open Banking
+  - PSD2
+  - TPP Verification
+  - Identity
+  - eIDAS
+  - Regulatory Checking
+  humanURL: https://developers.konsentus.com/api-reference/introduction.html
+  baseURL: https://api.konsentus.com
+  properties:
+  - url: https://developers.konsentus.com/api-reference/introduction.html
+    type: Documentation
+  - url: https://swagger.konsentus.com/
+    type: Swagger
+  - url: https://developers.konsentus.com/api-reference/fi-authentication.html
+    type: Authentication
+  - url: https://developers.konsentus.com/api-reference/endpoint-versioning.html
+    type: Versioning
+  - url: https://developers.konsentus.com/api-reference/transaction-jurisdictions.html
+    type: Documentation
+  - url: https://developers.konsentus.com/api-reference/error-codes.html
+    type: Errors
+  - url: openapi/konsentus-verify-api-openapi.yml
+    type: OpenAPI
+  description: |
+    Real-time SaaS API that Financial Institutions (ASPSPs) call to identify and regulate-check
+    Third-Party Providers (TPPs) under PSD2 Open Banking. The PSP Checking Service validates a
+    Base64-encoded eIDAS certificate with the issuing Qualified Trust Service Provider (QTSP),
+    confirms the TPP's regulated status with the relevant National Competent Authority (NCA)
+    on a pan-EEA basis, and returns the payment services the TPP is authorised to provide in
+    the requested jurisdiction. Supports eIDAS, OBIE, and OBHD certificate test scenarios.
+- aid: konsentus:konsentus-certificate-chain-service-api
+  name: Konsentus Certificate Chain Service API
+  tags:
+  - Open Banking
+  - PSD2
+  - Certificates
+  - eIDAS
+  - Trust Chain
+  humanURL: https://docs.psd.konsentus.com/
+  properties:
+  - url: https://docs.psd.konsentus.com/
+    type: Documentation
+  description: |
+    Managed service that maintains the up-to-date eIDAS certificate trust chain required to
+    secure PSD2 Open Banking API traffic. Removes the burden of tracking EU trusted list
+    updates, QTSP changes, and root/intermediate certificate rotation for ASPSPs.
+- aid: konsentus:konsentus-open-trust-platform
+  name: Konsentus Open Trust Platform
+  tags:
+  - Open Banking
+  - Open Finance
+  - Trust Framework
+  - Directory
+  - Ecosystem
+  humanURL: https://www.konsentus.com
+  properties:
+  - url: https://www.konsentus.com
+    type: Documentation
+  description: |
+    End-to-end platform used by central banks and market operators to build, manage, and
+    maintain national or regional open finance trust frameworks. Covers participant onboarding,
+    directory services, certificate issuance and management, consent infrastructure, and
+    regulatory reporting for emerging open finance regimes including FiDA.
+name: Konsentus
+tags:
+- Open Banking
+- Open Finance
+- PSD2
+- PSD3
+- FiDA
+- TPP Verification
+- Identity
+- eIDAS
+- Trust Services
+- Regulatory Checking
+- Financial Services
+kind: contract
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+common:
+- type: Portal
+  url: https://www.konsentus.com
+- type: Documentation
+  url: https://developers.konsentus.com/api-reference/introduction.html
+- type: Documentation
+  url: https://docs.psd.konsentus.com/
+- type: Swagger
+  url: https://swagger.konsentus.com/
+- type: GettingStarted
+  url: https://developers.konsentus.com/api-reference/getting-started.html
+- type: Authentication
+  url: https://developers.konsentus.com/api-reference/fi-authentication.html
+- type: Versioning
+  url: https://developers.konsentus.com/api-reference/endpoint-versioning.html
+- type: Errors
+  url: https://developers.konsentus.com/api-reference/error-codes.html
+- type: Glossary
+  url: https://developers.konsentus.com/api-reference/glossary.html
+- type: ReleaseNotes
+  url: https://developers.konsentus.com/api-reference/release-notes.html
+- type: Support
+  url: https://developers.konsentus.com/api-reference/support.html
+- type: FAQ
+  url: https://developers.konsentus.com/api-reference/faqs.html
+- type: Sandbox
+  url: https://www.konsentus.com/first-psd2-open-banking-tpp-sandbox/
+- type: PrivacyPolicy
+  url: https://www.konsentus.com/privacy-policy
+- type: TermsOfService
+  url: https://www.konsentus.com/terms-conditions
+- type: AcceptableUsePolicy
+  url: https://www.konsentus.com/acceptable-use-policy
+- type: CookiePolicy
+  url: https://www.konsentus.com/cookie-policy
+- type: Contact
+  url: https://www.konsentus.com/contact
+- type: Blog
+  url: https://www.konsentus.com/content-hub
+- type: PressReleases
+  url: https://www.konsentus.com/press-releases
+- type: Events
+  url: https://www.konsentus.com/events
+- type: LinkedIn
+  url: https://www.linkedin.com/company/konsentus/
+- type: X
+  url: https://twitter.com/konsentus/
+- type: GitHubOrganization
+  url: https://github.com/konsentus
+- type: Features
+  data:
+  - Real-time Third-Party Provider (TPP) identity verification via eIDAS certificates
+  - Real-time TPP regulatory status checking against National Competent Authority (NCA) registers on a pan-EEA basis
+  - Support for eIDAS, OBIE, and OBHD certificate test scenarios
+  - Certificate Chain Service tracking EU trusted list, QTSP changes, and root/intermediate rotation
+  - Immutable audit log of every identity and regulatory check
+  - Access token issuance, validation, and lifecycle management on behalf of the ASPSP (OAuth 2.0)
+  - Directory of 5,000+ regulated PISPs, AISPs, and ASPSPs
+  - Deployment as SaaS API, customer portal, or on-premise
+  - Customisable data feed frequency to match business requirements
+  - Pay-only-for-what-you-consume commercial model
+  - Konsentus Open Trust Platform for central banks and market operators building open finance frameworks
+  - Advisory and training services for PSD2, PSD3, and FiDA market participants
+  - 250+ financial institutions on the platform with claimed 100% uptime
+  sources:
+  - https://www.konsentus.com
+  - https://www.konsentus.com/konsentus-verify/
+  - https://developers.konsentus.com/api-reference/introduction.html
+  - https://docs.psd.konsentus.com/
+  updated: '2026-05-25'
+created: '2026-05-25'
+modified: '2026-05-25'
+position: Consuming
+description: |
+  Konsentus is a UK-headquartered specialist provider of identity verification and trust services
+  for open banking and open finance ecosystems. Its flagship Konsentus Verify SaaS API gives
+  Financial Institutions (ASPSPs) real-time PSD2 Third-Party Provider (TPP) identity and
+  regulatory checking against National Competent Authority registers across the EEA, validating
+  eIDAS, OBIE, and OBHD certificates with the issuing Qualified Trust Service Provider. The
+  Konsentus Certificate Chain Service keeps the eIDAS trust chain current, and the Konsentus
+  Open Trust Platform plus advisory practice helps central banks and market operators stand up
+  national open finance trust frameworks under PSD2, PSD3, and FiDA. Trusted by 250+ financial
+  institutions globally.
+maintainers:
+- FN: Kin Lane
+  email: info@apievangelist.com
+  X: apievangelist
+  url: https://apievangelist.com
+specificationVersion: '0.16'
