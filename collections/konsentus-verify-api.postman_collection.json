@@ -1,0 +1,483 @@
+{
+  "item": [
+    {
+      "id": "d0c3e769-b51e-4861-b99d-772f55740195",
+      "name": "PSP Checking Service",
+      "description": {
+        "content": "Third-Party Provider identity and regulatory validation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1c521ec3-9e60-4b6f-95b3-7161f8f4a436",
+          "name": "Check PSP eIDAS Certificate and Regulatory Status",
+          "request": {
+            "name": "Check PSP eIDAS Certificate and Regulatory Status",
+            "description": {
+              "content": "Validates a Base64-encoded eIDAS certificate presented by a Third-Party\nProvider (TPP) in real time. Returns certificate validity (QTSP,\nsignature, revocation, expiry), the home register (issuing NCA), and\nthe host register (operating NCA) plus the payment services the TPP is\nauthorised to provide in the requested jurisdiction.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "psp",
+                "eidas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "jurisdiction",
+                  "value": "<string>",
+                  "description": "(Required) ISO 3166 two-letter country code where the FI holds the customer's account."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Local NCA reference for the ASPSP making the request. Recommended format is the eIDAS authorization number.",
+                "key": "fi_reference_id",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Optional custom reference for audit/tracking purposes.",
+                "key": "transaction_reference",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) API endpoint version identifier.",
+                "key": "version",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Base64-encoded eIDAS certificate presented by the TPP.",
+                "key": "eidas",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad6e1b2f-9456-49fb-8cbe-c8ebfca6c9ce",
+              "name": "Successful PSP identity and regulatory check.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp",
+                    "eidas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jurisdiction",
+                      "value": "GB"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Local NCA reference for the ASPSP making the request. Recommended format is the eIDAS authorization number.",
+                    "key": "fi_reference_id",
+                    "value": "PSDGB-FCA-111111"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Optional custom reference for audit/tracking purposes.",
+                    "key": "transaction_reference",
+                    "value": "12345ABC"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API endpoint version identifier.",
+                    "key": "version",
+                    "value": "1"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Base64-encoded eIDAS certificate presented by the TPP.",
+                    "key": "eidas",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"eIDAS\": {\n    \"data\": {\n      \"pspSubjectName\": \"string\",\n      \"authNumber\": \"string\",\n      \"QTSPCommonName\": \"string\",\n      \"QTSPSource\": \"string\",\n      \"QTSPJurisdiction\": \"string\"\n    },\n    \"validity\": {\n      \"validQTSP\": false,\n      \"validSignature\": false,\n      \"notRevoked\": false,\n      \"notExpired\": true\n    }\n  },\n  \"homeRegister\": {\n    \"ncaName\": \"string\",\n    \"ncaCountryCode\": \"string\",\n    \"registerType\": \"string\",\n    \"categoryEntries\": [\n      {\n        \"categoryName\": \"string\",\n        \"pspLegalName\": \"string\",\n        \"pspAuthStatus\": \"string\",\n        \"pspPaymentServices\": [\n          9444,\n          1426\n        ]\n      },\n      {\n        \"categoryName\": \"string\",\n        \"pspLegalName\": \"string\",\n        \"pspAuthStatus\": \"string\",\n        \"pspPaymentServices\": [\n          436,\n          8788\n        ]\n      }\n    ]\n  },\n  \"hostRegister\": {\n    \"ncaName\": \"string\",\n    \"ncaCountryCode\": \"string\",\n    \"registerType\": \"string\",\n    \"categoryEntries\": [\n      {\n        \"categoryName\": \"string\",\n        \"pspLegalName\": \"string\",\n        \"pspAuthStatus\": \"string\",\n        \"pspPaymentServices\": [\n          1247,\n          7846\n        ]\n      },\n      {\n        \"categoryName\": \"string\",\n        \"pspLegalName\": \"string\",\n        \"pspAuthStatus\": \"string\",\n        \"pspPaymentServices\": [\n          6364,\n          9100\n        ]\n      }\n    ],\n    \"warning\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e79b9f1-eedf-4fc9-b7d6-e6cf42381a47",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp",
+                    "eidas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jurisdiction",
+                      "value": "GB"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Local NCA reference for the ASPSP making the request. Recommended format is the eIDAS authorization number.",
+                    "key": "fi_reference_id",
+                    "value": "PSDGB-FCA-111111"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Optional custom reference for audit/tracking purposes.",
+                    "key": "transaction_reference",
+                    "value": "12345ABC"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API endpoint version identifier.",
+                    "key": "version",
+                    "value": "1"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Base64-encoded eIDAS certificate presented by the TPP.",
+                    "key": "eidas",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"title\": \"string\",\n      \"link\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"title\": \"string\",\n      \"link\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1df9f9dc-d279-4d33-a817-be455ee8902e",
+              "name": "Missing or malformed parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp",
+                    "eidas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jurisdiction",
+                      "value": "GB"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Local NCA reference for the ASPSP making the request. Recommended format is the eIDAS authorization number.",
+                    "key": "fi_reference_id",
+                    "value": "PSDGB-FCA-111111"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Optional custom reference for audit/tracking purposes.",
+                    "key": "transaction_reference",
+                    "value": "12345ABC"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API endpoint version identifier.",
+                    "key": "version",
+                    "value": "1"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Base64-encoded eIDAS certificate presented by the TPP.",
+                    "key": "eidas",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"title\": \"string\",\n      \"link\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"title\": \"string\",\n      \"link\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65083956-264d-457f-910b-5f7c4394231b",
+              "name": "Method not allowed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp",
+                    "eidas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jurisdiction",
+                      "value": "GB"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Local NCA reference for the ASPSP making the request. Recommended format is the eIDAS authorization number.",
+                    "key": "fi_reference_id",
+                    "value": "PSDGB-FCA-111111"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Optional custom reference for audit/tracking purposes.",
+                    "key": "transaction_reference",
+                    "value": "12345ABC"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API endpoint version identifier.",
+                    "key": "version",
+                    "value": "1"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Base64-encoded eIDAS certificate presented by the TPP.",
+                    "key": "eidas",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"title\": \"string\",\n      \"link\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"title\": \"string\",\n      \"link\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1279a63c-6836-4f26-8ff6-653b2a92ddc2",
+              "name": "Service unavailable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp",
+                    "eidas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "jurisdiction",
+                      "value": "GB"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Local NCA reference for the ASPSP making the request. Recommended format is the eIDAS authorization number.",
+                    "key": "fi_reference_id",
+                    "value": "PSDGB-FCA-111111"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Optional custom reference for audit/tracking purposes.",
+                    "key": "transaction_reference",
+                    "value": "12345ABC"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API endpoint version identifier.",
+                    "key": "version",
+                    "value": "1"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Base64-encoded eIDAS certificate presented by the TPP.",
+                    "key": "eidas",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"title\": \"string\",\n      \"link\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"title\": \"string\",\n      \"link\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.konsentus.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7d1004e2-6f57-42da-b300-7c9d864decd2",
+    "name": "Konsentus Verify API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Konsentus Verify provides real-time Third-Party Provider (TPP) identity and\nregulatory checking services to Financial Institutions (ASPSPs) under PSD2\nOpen Banking. The PSP Checking Service validates an eIDAS certificate\npresented by a TPP, confirms the TPP's regulated status with the relevant\nNational Competent Authority (NCA), and returns the payment services the\nTPP is authorised to provide on a pan-EEA basis.\n\n\nContact Support:\n Name: Konsentus Support\n Email: insights@konsentus.com",
+      "type": "text/plain"
+    }
+  }
+}
