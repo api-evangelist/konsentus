@@ -24,7 +24,7 @@ apis:
   - url: https://developers.konsentus.com/api-reference/transaction-jurisdictions.html
     type: Documentation
   - url: https://developers.konsentus.com/api-reference/error-codes.html
-    type: Errors
+    type: ErrorCodes
   - url: openapi/konsentus-verify-api-openapi.yml
     type: OpenAPI
   description: |
@@ -98,7 +98,7 @@ common:
   url: https://developers.konsentus.com/api-reference/fi-authentication.html
 - type: Versioning
   url: https://developers.konsentus.com/api-reference/endpoint-versioning.html
-- type: Errors
+- type: ErrorCodes
   url: https://developers.konsentus.com/api-reference/error-codes.html
 - type: Glossary
   url: https://developers.konsentus.com/api-reference/glossary.html
