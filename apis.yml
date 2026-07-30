@@ -1,39 +1,6 @@
 aid: konsentus
 url: https://raw.githubusercontent.com/api-evangelist/konsentus/refs/heads/main/apis.yml
 apis:
-- aid: konsentus:konsentus-verify-api
-  name: Konsentus Verify API
-  tags:
-  - Open Banking
-  - PSD2
-  - TPP Verification
-  - Identity
-  - eIDAS
-  - Regulatory Checking
-  humanURL: https://developers.konsentus.com/api-reference/introduction.html
-  baseURL: https://api.konsentus.com
-  properties:
-  - url: https://developers.konsentus.com/api-reference/introduction.html
-    type: Documentation
-  - url: https://swagger.konsentus.com/
-    type: Swagger
-  - url: https://developers.konsentus.com/api-reference/fi-authentication.html
-    type: Authentication
-  - url: https://developers.konsentus.com/api-reference/endpoint-versioning.html
-    type: Versioning
-  - url: https://developers.konsentus.com/api-reference/transaction-jurisdictions.html
-    type: Documentation
-  - url: https://developers.konsentus.com/api-reference/error-codes.html
-    type: ErrorCodes
-  - url: openapi/konsentus-verify-api-openapi.yml
-    type: OpenAPI
-  description: |
-    Real-time SaaS API that Financial Institutions (ASPSPs) call to identify and regulate-check
-    Third-Party Providers (TPPs) under PSD2 Open Banking. The PSP Checking Service validates a
-    Base64-encoded eIDAS certificate with the issuing Qualified Trust Service Provider (QTSP),
-    confirms the TPP's regulated status with the relevant National Competent Authority (NCA)
-    on a pan-EEA basis, and returns the payment services the TPP is authorised to provide in
-    the requested jurisdiction. Supports eIDAS, OBIE, and OBHD certificate test scenarios.
 - aid: konsentus:konsentus-certificate-chain-service-api
   name: Konsentus Certificate Chain Service API
   tags:
@@ -46,9 +13,11 @@ apis:
   properties:
   - url: https://docs.psd.konsentus.com/
     type: Documentation
-  description: |
+  description: >
     Managed service that maintains the up-to-date eIDAS certificate trust chain required to
+
     secure PSD2 Open Banking API traffic. Removes the burden of tracking EU trusted list
+
     updates, QTSP changes, and root/intermediate certificate rotation for ASPSPs.
 - aid: konsentus:konsentus-open-trust-platform
   name: Konsentus Open Trust Platform
@@ -62,11 +31,36 @@ apis:
   properties:
   - url: https://www.konsentus.com
     type: Documentation
-  description: |
+  description: >
     End-to-end platform used by central banks and market operators to build, manage, and
+
     maintain national or regional open finance trust frameworks. Covers participant onboarding,
+
     directory services, certificate issuance and management, consent infrastructure, and
+
     regulatory reporting for emerging open finance regimes including FiDA.
+- aid: konsentus:konsentus-psp-checking-service-api
+  name: Konsentus PSP Checking Service API
+  description: Third-Party Provider identity and regulatory validation
+  humanURL: https://developers.konsentus.com/api-reference/introduction.html
+  baseURL: https://api.konsentus.com
+  tags:
+  - PSP Checking Service
+  properties:
+  - type: OpenAPI
+    url: openapi/konsentus-psp-checking-service-api-openapi.yml
+  - type: Documentation
+    url: https://developers.konsentus.com/api-reference/introduction.html
+  - type: Swagger
+    url: https://swagger.konsentus.com/
+  - type: Authentication
+    url: https://developers.konsentus.com/api-reference/fi-authentication.html
+  - type: Versioning
+    url: https://developers.konsentus.com/api-reference/endpoint-versioning.html
+  - type: Documentation
+    url: https://developers.konsentus.com/api-reference/transaction-jurisdictions.html
+  - type: ErrorCodes
+    url: https://developers.konsentus.com/api-reference/error-codes.html
 name: Konsentus
 tags:
 - Open Banking
@@ -81,7 +75,19 @@ tags:
 - Regulatory Checking
 - Financial Services
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/konsentus.png
 access: 3rd-Party
 common:
 - type: AgenticAccess
