@@ -1,0 +1,14 @@
+{
+  "provider": "konsentus",
+  "sources": [
+    "konsentus-psp-checking-service-api-openapi.yml"
+  ],
+  "outputs": [
+    "konsentus-psp-checking-service-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,241 @@
+openapi: 3.0.3
+info:
+  title: Konsentus Verify API
+  version: '1.0'
+  description: |
+    Konsentus Verify provides real-time Third-Party Provider (TPP) identity and
+    regulatory checking services to Financial Institutions (ASPSPs) under PSD2
+    Open Banking. The PSP Checking Service validates an eIDAS certificate
+    presented by a TPP, confirms the TPP's regulated status with the relevant
+    National Competent Authority (NCA), and returns the payment services the
+    TPP is authorised to provide on a pan-EEA basis.
+  contact:
+    name: Konsentus Support
+    email: insights@konsentus.com
+    url: https://developers.konsentus.com/api-reference/introduction.html
+  license:
+    name: Proprietary
+    url: https://www.konsentus.com/terms-conditions
+servers:
+- url: https://api.konsentus.com
+  description: Konsentus Verify production environment
+- url: https://sandbox.konsentus.com
+  description: Konsentus Verify sandbox environment
+tags:
+- name: PSP Checking Service
+  description: Third-Party Provider identity and regulatory validation
+security:
+- BasicAuth: []
+paths:
+  /v1/psp/eidas:
+    get:
+      tags:
+      - PSP Checking Service
+      summary: Check PSP eIDAS Certificate and Regulatory Status
+      description: |
+        Validates a Base64-encoded eIDAS certificate presented by a Third-Party
+        Provider (TPP) in real time. Returns certificate validity (QTSP,
+        signature, revocation, expiry), the home register (issuing NCA), and
+        the host register (operating NCA) plus the payment services the TPP is
+        authorised to provide in the requested jurisdiction.
+      operationId: getPspEidas
+      parameters:
+      - name: jurisdiction
+        in: query
+        required: true
+        description: ISO 3166 two-letter country code where the FI holds the customer's account.
+        schema:
+          type: string
+          minLength: 2
+          maxLength: 2
+          example: GB
+      - name: fi_reference_id
+        in: header
+        required: true
+        description: Local NCA reference for the ASPSP making the request. Recommended format is the eIDAS authorization number.
+        schema:
+          type: string
+          minLength: 6
+          maxLength: 128
+          example: PSDGB-FCA-111111
+      - name: transaction_reference
+        in: header
+        required: false
+        description: Optional custom reference for audit/tracking purposes.
+        schema:
+          type: string
+          maxLength: 128
+          example: 12345ABC
+      - name: version
+        in: header
+        required: true
+        description: API endpoint version identifier.
+        schema:
+          type: string
+          example: '1'
+      - name: eidas
+        in: header
+        required: true
+        description: Base64-encoded eIDAS certificate presented by the TPP.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful PSP identity and regulatory check.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PspEidasResponse'
+        '401':
+          description: Authentication failure.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Missing or malformed parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '405':
+          description: Method not allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service unavailable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using the API consumer's client ID and client secret.
+  schemas:
+    PspEidasResponse:
+      type: object
+      properties:
+        eIDAS:
+          $ref: '#/components/schemas/Eidas'
+        homeRegister:
+          $ref: '#/components/schemas/HomeRegister'
+        hostRegister:
+          $ref: '#/components/schemas/HostRegister'
+    Eidas:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/EidasData'
+        validity:
+          $ref: '#/components/schemas/EidasValidity'
+    EidasData:
+      type: object
+      properties:
+        pspSubjectName:
+          type: string
+          nullable: true
+          description: Subject name from the eIDAS certificate.
+        authNumber:
+          type: string
+          nullable: true
+          description: TPP authorisation number.
+        QTSPCommonName:
+          type: string
+          nullable: true
+          description: Common name of the Qualified Trust Service Provider that issued the certificate.
+        QTSPSource:
+          type: string
+          description: Source of the QTSP record.
+        QTSPJurisdiction:
+          type: string
+          description: Jurisdiction of the QTSP.
+    EidasValidity:
+      type: object
+      properties:
+        validQTSP:
+          type: boolean
+          description: True if the QTSP is recognised on the EU trusted list.
+        validSignature:
+          type: boolean
+          description: True if the certificate signature is valid.
+        notRevoked:
+          type: boolean
+          description: True if the certificate has not been revoked (CRL/OCSP).
+        notExpired:
+          type: boolean
+          description: True if the certificate is within its validity period.
+    HomeRegister:
+      type: object
+      description: National Competent Authority register of the TPP's home country.
+      properties:
+        ncaName:
+          type: string
+        ncaCountryCode:
+          type: string
+        registerType:
+          type: string
+        categoryEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryEntry'
+    HostRegister:
+      type: object
+      description: National Competent Authority register of the jurisdiction in which the service is being requested.
+      properties:
+        ncaName:
+          type: string
+          nullable: true
+        ncaCountryCode:
+          type: string
+        registerType:
+          type: string
+        categoryEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryEntry'
+        warning:
+          type: array
+          items:
+            type: string
+    CategoryEntry:
+      type: object
+      properties:
+        categoryName:
+          type: string
+        pspLegalName:
+          type: string
+        pspAuthStatus:
+          type: string
+          description: Authorisation status of the PSP (e.g. authorised, suspended, withdrawn).
+        pspPaymentServices:
+          type: array
+          description: Numeric PSD2 payment service codes the PSP is authorised to provide.
+          items:
+            type: integer
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for this error occurrence.
+        code:
+          type: string
+          description: Konsentus error code (e.g. authentication_error, parameter_invalid, jurisdiction_invalid).
+        title:
+          type: string
+          description: Human-readable error title.
+        link:
+          type: string
+          description: Link to documentation describing the error.
