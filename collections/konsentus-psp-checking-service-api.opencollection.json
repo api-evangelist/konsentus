@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Konsentus Verify PSP Checking Service API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PSP Checking Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check PSP eIDAS Certificate and Regulatory Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.konsentus.com/v1/psp/eidas",
+            "headers": [
+              {
+                "name": "fi_reference_id",
+                "value": ""
+              },
+              {
+                "name": "transaction_reference",
+                "value": ""
+              },
+              {
+                "name": "version",
+                "value": ""
+              },
+              {
+                "name": "eidas",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "jurisdiction",
+                "value": "",
+                "type": "query",
+                "description": "ISO 3166 two-letter country code where the FI holds the customer's account."
+              }
+            ]
+          },
+          "docs": "Validates a Base64-encoded eIDAS certificate presented by a Third-Party\nProvider (TPP) in real time. Returns certificate validity (QTSP,\nsignature, revocation, expiry), the home register (issuing NCA), and\nthe host register (operating NCA) plus the payment services the TPP is\nauthorised to provide in the requested jurisdiction.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
