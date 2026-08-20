@@ -73,6 +73,18 @@ tags:
 - eIDAS
 - Trust Services
 - Regulatory Checking
+- Financial-Services
+tags_raw:
+- Open Banking
+- Open Finance
+- PSD2
+- PSD3
+- FiDA
+- TPP Verification
+- Identity
+- eIDAS
+- Trust Services
+- Regulatory Checking
 - Financial Services
 kind: contract
 accessModel:
