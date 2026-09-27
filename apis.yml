@@ -73,7 +73,7 @@ tags:
 - eIDAS
 - Trust Services
 - Regulatory Checking
-- Financial-Services
+- Financial Services
 tags_raw:
 - Open Banking
 - Open Finance
@@ -86,6 +86,7 @@ tags_raw:
 - Trust Services
 - Regulatory Checking
 - Financial Services
+- Financial-Services
 kind: contract
 deliveryModel:
   model: saas

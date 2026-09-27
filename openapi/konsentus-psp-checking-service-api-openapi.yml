@@ -119,93 +119,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    HostRegister:
-      type: object
-      description: National Competent Authority register of the jurisdiction in which the service is being requested.
-      properties:
-        ncaName:
-          type:
-          - string
-          - 'null'
-        ncaCountryCode:
-          type: string
-        registerType:
-          type: string
-        categoryEntries:
-          type: array
-          items:
-            $ref: '#/components/schemas/CategoryEntry'
-        warning:
-          type: array
-          items:
-            type: string
-    PspEidasResponse:
-      type: object
-      properties:
-        eIDAS:
-          $ref: '#/components/schemas/Eidas'
-        homeRegister:
-          $ref: '#/components/schemas/HomeRegister'
-        hostRegister:
-          $ref: '#/components/schemas/HostRegister'
-    Error:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for this error occurrence.
-        code:
-          type: string
-          description: Konsentus error code (e.g. authentication_error, parameter_invalid, jurisdiction_invalid).
-        title:
-          type: string
-          description: Human-readable error title.
-        link:
-          type: string
-          description: Link to documentation describing the error.
-    HomeRegister:
-      type: object
-      description: National Competent Authority register of the TPP's home country.
-      properties:
-        ncaName:
-          type: string
-        ncaCountryCode:
-          type: string
-        registerType:
-          type: string
-        categoryEntries:
-          type: array
-          items:
-            $ref: '#/components/schemas/CategoryEntry'
-    Eidas:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/EidasData'
-        validity:
-          $ref: '#/components/schemas/EidasValidity'
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    CategoryEntry:
-      type: object
-      properties:
-        categoryName:
-          type: string
-        pspLegalName:
-          type: string
-        pspAuthStatus:
-          type: string
-          description: Authorisation status of the PSP (e.g. authorised, suspended, withdrawn).
-        pspPaymentServices:
-          type: array
-          description: Numeric PSD2 payment service codes the PSP is authorised to provide.
-          items:
-            type: integer
     EidasValidity:
       type: object
       properties:
@@ -221,6 +134,30 @@ components:
         notExpired:
           type: boolean
           description: True if the certificate is within its validity period.
+    Error:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for this error occurrence.
+        code:
+          type: string
+          description: Konsentus error code (e.g. authentication_error, parameter_invalid, jurisdiction_invalid).
+        title:
+          type: string
+          description: Human-readable error title.
+        link:
+          type: string
+          description: Link to documentation describing the error.
+    PspEidasResponse:
+      type: object
+      properties:
+        eIDAS:
+          $ref: '#/components/schemas/Eidas'
+        homeRegister:
+          $ref: '#/components/schemas/HomeRegister'
+        hostRegister:
+          $ref: '#/components/schemas/HostRegister'
     EidasData:
       type: object
       properties:
@@ -245,6 +182,69 @@ components:
         QTSPJurisdiction:
           type: string
           description: Jurisdiction of the QTSP.
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    HomeRegister:
+      type: object
+      description: National Competent Authority register of the TPP's home country.
+      properties:
+        ncaName:
+          type: string
+        ncaCountryCode:
+          type: string
+        registerType:
+          type: string
+        categoryEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryEntry'
+    CategoryEntry:
+      type: object
+      properties:
+        categoryName:
+          type: string
+        pspLegalName:
+          type: string
+        pspAuthStatus:
+          type: string
+          description: Authorisation status of the PSP (e.g. authorised, suspended, withdrawn).
+        pspPaymentServices:
+          type: array
+          description: Numeric PSD2 payment service codes the PSP is authorised to provide.
+          items:
+            type: integer
+    HostRegister:
+      type: object
+      description: National Competent Authority register of the jurisdiction in which the service is being requested.
+      properties:
+        ncaName:
+          type:
+          - string
+          - 'null'
+        ncaCountryCode:
+          type: string
+        registerType:
+          type: string
+        categoryEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryEntry'
+        warning:
+          type: array
+          items:
+            type: string
+    Eidas:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/EidasData'
+        validity:
+          $ref: '#/components/schemas/EidasValidity'
   securitySchemes:
     BasicAuth:
       type: http
