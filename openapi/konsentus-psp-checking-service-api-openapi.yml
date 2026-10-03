@@ -119,21 +119,26 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    EidasValidity:
+    HostRegister:
       type: object
+      description: National Competent Authority register of the jurisdiction in which the service is being requested.
       properties:
-        validQTSP:
-          type: boolean
-          description: True if the QTSP is recognised on the EU trusted list.
-        validSignature:
-          type: boolean
-          description: True if the certificate signature is valid.
-        notRevoked:
-          type: boolean
-          description: True if the certificate has not been revoked (CRL/OCSP).
-        notExpired:
-          type: boolean
-          description: True if the certificate is within its validity period.
+        ncaName:
+          type:
+          - string
+          - 'null'
+        ncaCountryCode:
+          type: string
+        registerType:
+          type: string
+        categoryEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryEntry'
+        warning:
+          type: array
+          items:
+            type: string
     Error:
       type: object
       properties:
@@ -149,15 +154,57 @@ components:
         link:
           type: string
           description: Link to documentation describing the error.
-    PspEidasResponse:
+    CategoryEntry:
       type: object
       properties:
-        eIDAS:
-          $ref: '#/components/schemas/Eidas'
-        homeRegister:
-          $ref: '#/components/schemas/HomeRegister'
-        hostRegister:
-          $ref: '#/components/schemas/HostRegister'
+        categoryName:
+          type: string
+        pspLegalName:
+          type: string
+        pspAuthStatus:
+          type: string
+          description: Authorisation status of the PSP (e.g. authorised, suspended, withdrawn).
+        pspPaymentServices:
+          type: array
+          description: Numeric PSD2 payment service codes the PSP is authorised to provide.
+          items:
+            type: integer
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    HomeRegister:
+      type: object
+      description: National Competent Authority register of the TPP's home country.
+      properties:
+        ncaName:
+          type: string
+        ncaCountryCode:
+          type: string
+        registerType:
+          type: string
+        categoryEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryEntry'
+    EidasValidity:
+      type: object
+      properties:
+        validQTSP:
+          type: boolean
+          description: True if the QTSP is recognised on the EU trusted list.
+        validSignature:
+          type: boolean
+          description: True if the certificate signature is valid.
+        notRevoked:
+          type: boolean
+          description: True if the certificate has not been revoked (CRL/OCSP).
+        notExpired:
+          type: boolean
+          description: True if the certificate is within its validity period.
     EidasData:
       type: object
       properties:
@@ -182,62 +229,6 @@ components:
         QTSPJurisdiction:
           type: string
           description: Jurisdiction of the QTSP.
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    HomeRegister:
-      type: object
-      description: National Competent Authority register of the TPP's home country.
-      properties:
-        ncaName:
-          type: string
-        ncaCountryCode:
-          type: string
-        registerType:
-          type: string
-        categoryEntries:
-          type: array
-          items:
-            $ref: '#/components/schemas/CategoryEntry'
-    CategoryEntry:
-      type: object
-      properties:
-        categoryName:
-          type: string
-        pspLegalName:
-          type: string
-        pspAuthStatus:
-          type: string
-          description: Authorisation status of the PSP (e.g. authorised, suspended, withdrawn).
-        pspPaymentServices:
-          type: array
-          description: Numeric PSD2 payment service codes the PSP is authorised to provide.
-          items:
-            type: integer
-    HostRegister:
-      type: object
-      description: National Competent Authority register of the jurisdiction in which the service is being requested.
-      properties:
-        ncaName:
-          type:
-          - string
-          - 'null'
-        ncaCountryCode:
-          type: string
-        registerType:
-          type: string
-        categoryEntries:
-          type: array
-          items:
-            $ref: '#/components/schemas/CategoryEntry'
-        warning:
-          type: array
-          items:
-            type: string
     Eidas:
       type: object
       properties:
@@ -245,6 +236,15 @@ components:
           $ref: '#/components/schemas/EidasData'
         validity:
           $ref: '#/components/schemas/EidasValidity'
+    PspEidasResponse:
+      type: object
+      properties:
+        eIDAS:
+          $ref: '#/components/schemas/Eidas'
+        homeRegister:
+          $ref: '#/components/schemas/HomeRegister'
+        hostRegister:
+          $ref: '#/components/schemas/HostRegister'
   securitySchemes:
     BasicAuth:
       type: http
