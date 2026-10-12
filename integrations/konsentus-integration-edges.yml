@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/konsentus/integrations
+- https://n8n.io/integrations/konsentus/
+- https://composio.dev/toolkits/konsentus
+- https://monid.ai/tools/konsentus
+checked:
+- https://composio.dev/toolkits/konsentus
+- https://monid.ai/tools/konsentus
+- https://n8n.io/integrations/konsentus/
+- https://zapier.com/apps/konsentus/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
