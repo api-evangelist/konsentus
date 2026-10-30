@@ -1,4 +1,4 @@
-# Konsentus (konsentus)
+# Konsentus
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,152 +64,106 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Konsentus is a UK-headquartered specialist provider of identity verification and trust services
-for open banking and open finance ecosystems. Its flagship Konsentus Verify SaaS API gives
-Financial Institutions (ASPSPs) real-time PSD2 Third-Party Provider (TPP) identity and
-regulatory checking against National Competent Authority registers across the EEA, validating
-eIDAS, OBIE, and OBHD certificates with the issuing Qualified Trust Service Provider. The
-Konsentus Certificate Chain Service keeps the eIDAS trust chain current, and the Konsentus
-Open Trust Platform plus advisory practice helps central banks and market operators stand up
-national open finance trust frameworks under PSD2, PSD3, and FiDA. Trusted by 250+ financial
-institutions globally.
+Konsentus is a UK-headquartered specialist provider of identity verification and trust services for open banking and open finance ecosystems. Its flagship Konsentus Verify SaaS API gives Financial Institutions (ASPSPs) real-time PSD2 Third-Party Provider (TPP) identity and regulatory checking against National Competent Authority registers across the EEA, validating eIDAS, OBIE, and OBHD certificates with the issuing Qualified Trust Service Provider. The Konsentus Certificate Chain Service keeps the eIDAS trust chain current, and the Konsentus Open Trust Platform plus advisory practice helps central banks and market operators stand up national open finance trust frameworks under PSD2, PSD3, and FiDA. Trusted by 250+ financial institutions globally.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/konsentus/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/konsentus/refs/heads/main/apis.yml)
+**Areas:** Open Banking · Open Finance · PSD2 · PSD3 · FiDA · TPP Verification · Identity · eIDAS · Trust Services · Regulatory Checking · Financial Services
 
-## Scope
+## Konsentus on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Konsentus is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/konsentus/](https://apis.io/providers/konsentus/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-- Open Banking
-- Open Finance
-- PSD2
-- PSD3
-- FiDA
-- TPP Verification
-- Identity
-- eIDAS
-- Trust Services
-- Regulatory Checking
-- Financial Services
+- [Konsentus Certificate Chain Service API](https://apis.io/apis/konsentus/konsentus-certificate-chain-service-api/) — Managed service that maintains the up-to-date eIDAS certificate trust chain required to secure PSD2 Open Banking API traffic. Removes the burden of tracking…
+- [Konsentus Open Trust Platform](https://apis.io/apis/konsentus/konsentus-open-trust-platform/) — End-to-end platform used by central banks and market operators to build, manage, and maintain national or regional open finance trust frameworks. Covers…
+- [Konsentus PSP Checking Service API](https://apis.io/apis/konsentus/konsentus-psp-checking-service-api/) — Third-Party Provider identity and regulatory validation
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-25
-- **Modified:** 2026-05-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Konsentus Verify API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Real-time SaaS API that Financial Institutions (ASPSPs) call to identify and regulate-check
-Third-Party Providers (TPPs) under PSD2 Open Banking. The PSP Checking Service validates a
-Base64-encoded eIDAS certificate with the issuing Qualified Trust Service Provider (QTSP),
-confirms the TPP's regulated status with the relevant National Competent Authority (NCA)
-on a pan-EEA basis, and returns the payment services the TPP is authorised to provide in
-the requested jurisdiction. Supports eIDAS, OBIE, and OBHD certificate test scenarios.
+- [Konsentus Agentic Access](https://apis.io/agentic-access/konsentus/konsentus-agentic-access/)
 
-- **Human URL:** [https://developers.konsentus.com/api-reference/introduction.html](https://developers.konsentus.com/api-reference/introduction.html)
-- **Base URL:** `https://api.konsentus.com`
+#### Collections (2)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Open Banking
-- PSD2
-- TPP Verification
-- Identity
-- eIDAS
-- Regulatory Checking
+- [Konsentus Verify PSP Checking Service API](https://apis.io/collections/konsentus/open-konsentus-psp-checking-service-api/)
+- [Konsentus Verify API](https://apis.io/collections/konsentus/open-konsentus-verify-api/)
 
-#### Properties
+#### Security (2)
 
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Konsentus Authentication](https://apis.io/security/konsentus/konsentus-authentication/)
+- [Konsentus Domain Security](https://apis.io/security/konsentus/konsentus-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.konsentus.com/)
 - [Documentation](https://developers.konsentus.com/api-reference/introduction.html)
-- [Swagger](https://swagger.konsentus.com/)
-- [Authentication](https://developers.konsentus.com/api-reference/fi-authentication.html)
-- [Versioning](https://developers.konsentus.com/api-reference/endpoint-versioning.html)
-- [Documentation](https://developers.konsentus.com/api-reference/transaction-jurisdictions.html)
-- [Errors](https://developers.konsentus.com/api-reference/error-codes.html)
-- [OpenAPI](openapi/konsentus-verify-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/konsentus-verify-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/konsentus-verify-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Konsentus Certificate Chain Service API
-
-Managed service that maintains the up-to-date eIDAS certificate trust chain required to
-secure PSD2 Open Banking API traffic. Removes the burden of tracking EU trusted list
-updates, QTSP changes, and root/intermediate certificate rotation for ASPSPs.
-
-- **Human URL:** [https://docs.psd.konsentus.com/](https://docs.psd.konsentus.com/)
-
-#### Tags
-
-- Open Banking
-- PSD2
-- Certificates
-- eIDAS
-- Trust Chain
-
-#### Properties
-
-- [Documentation](https://docs.psd.konsentus.com/)
-- [Postman Collection](collections/konsentus-verify-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/konsentus-verify-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Konsentus Open Trust Platform
-
-End-to-end platform used by central banks and market operators to build, manage, and
-maintain national or regional open finance trust frameworks. Covers participant onboarding,
-directory services, certificate issuance and management, consent infrastructure, and
-regulatory reporting for emerging open finance regimes including FiDA.
-
-- **Human URL:** [https://www.konsentus.com](https://www.konsentus.com)
-
-#### Tags
-
-- Open Banking
-- Open Finance
-- Trust Framework
-- Directory
-- Ecosystem
-
-#### Properties
-
-- [Documentation](https://www.konsentus.com)
-- [Postman Collection](collections/konsentus-verify-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/konsentus-verify-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Portal](https://www.konsentus.com)
-- [Documentation](https://developers.konsentus.com/api-reference/introduction.html)
-- [Documentation](https://docs.psd.konsentus.com/)
-- [Swagger](https://swagger.konsentus.com/)
-- [Getting Started](https://developers.konsentus.com/api-reference/getting-started.html)
-- [Authentication](https://developers.konsentus.com/api-reference/fi-authentication.html)
-- [Versioning](https://developers.konsentus.com/api-reference/endpoint-versioning.html)
-- [Errors](https://developers.konsentus.com/api-reference/error-codes.html)
-- [Glossary](https://developers.konsentus.com/api-reference/glossary.html)
-- [Release Notes](https://developers.konsentus.com/api-reference/release-notes.html)
+- [Getting started](https://developers.konsentus.com/api-reference/getting-started.html)
 - [Support](https://developers.konsentus.com/api-reference/support.html)
-- [F A Q](https://developers.konsentus.com/api-reference/faqs.html)
-- [Sandbox](https://www.konsentus.com/first-psd2-open-banking-tpp-sandbox/)
-- [Privacy Policy](https://www.konsentus.com/privacy-policy)
-- [Terms of Service](https://www.konsentus.com/terms-conditions)
-- [Acceptable Use Policy](https://www.konsentus.com/acceptable-use-policy)
-- [Cookie Policy](https://www.konsentus.com/cookie-policy)
-- [Contact](https://www.konsentus.com/contact)
 - [Blog](https://www.konsentus.com/content-hub)
-- [Press Releases](https://www.konsentus.com/press-releases)
-- [Events](https://www.konsentus.com/events)
-- [LinkedIn](https://www.linkedin.com/company/konsentus/)
-- [X (Twitter)](https://twitter.com/konsentus/)
-- [GitHub Organization](https://github.com/konsentus)
-- [Features](undefined)
+- [Terms of service](https://www.konsentus.com/terms-conditions)
+- [Privacy policy](https://www.konsentus.com/privacy-policy)
+- [GitHub](https://github.com/konsentus)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 35.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 58.0 |
+| Contract quality | 52.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 54.8 |
+| Access clarity | 21.1 |
+
+**Agent readiness 26.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.7** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/konsentus/](https://apis.io/providers/konsentus/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Konsentus: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/konsentus/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
